@@ -77,16 +77,19 @@ async function getDangerousByAge() {
 
 async function avgDangerousByAge() {
   const dangerousByAge = await getDangerousByAge();
-  const avgOfAge = {}
+  const avgOfAge = {};
   Object.keys(dangerousByAge).forEach((age) => {
-    avgOfAge[age] = math.avg(dangerousByAge[age])
-  })
+    avgOfAge[age] = math.avg(dangerousByAge[age]);
+  });
   return avgOfAge;
 }
 
-async function getTop() {
-  const avgOfAge = await avgDangerousByAge()
-  avgOfAge.sort((a, b) => a[1] - b[1]);
-  console.log(avgOfAge)
+async function getTopDangerousAges() {
+  const avgOfAge = await avgDangerousByAge();
+  const sorted = Object.entries(avgOfAge)
+    .sort((a, b) => a[1] - b[1])
+    .reverse();
+  const top = sorted.slice(0, 3).map((age) => age[0]);
+  return top
 }
-getTop()
+
