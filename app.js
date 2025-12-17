@@ -5,12 +5,12 @@ import math from "./utils/mathTools.js";
 
 const baseUrl = "https://spies-test-server.vercel.app/";
 
-async function fetchPeople() {
+export async function fetchPeople() {
   const people = await api.get(baseUrl + "people");
   file.write("data/PEOPLE.json", JSON.stringify(people));
 }
 
-async function fetchRecords() {
+export async function fetchRecords() {
   const records = await api.get(baseUrl + "transcriptions");
   file.write("data/TRANSCRIPTIONS.json", JSON.stringify(records));
 }
@@ -44,11 +44,11 @@ async function getPeopleBy(by, value) {
   }
 }
 
-function getPeopleByName(name) {
+export function getPeopleByName(name) {
   getPeopleBy("name", name);
 }
 
-function getPeopleByAge(age) {
+export function getPeopleByAge(age) {
   getPeopleBy("age", age);
 }
 
@@ -93,7 +93,7 @@ async function getTopDangerousAges() {
   return top;
 }
 
-async function getMostDangerousPeople() {
+export async function getMostDangerousPeople() {
   const topDangerousAges = await getTopDangerousAges();
   const transcriptions = await getTranscriptions();
   return transcriptions.filter((people) => {
@@ -103,10 +103,8 @@ async function getMostDangerousPeople() {
   });
 }
 
-async function reportMostDangerousPeople() {
+export async function reportMostDangerousPeople() {
   let mostDangerousPeople = await JSON.stringify( await getMostDangerousPeople())
   const response = await fetch(baseUrl + "report?array" + mostDangerousPeople);
   return response.text()
 }
-const response = await reportMostDangerousPeople()
-console.log(response)
