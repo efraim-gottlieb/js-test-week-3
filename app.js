@@ -102,4 +102,10 @@ async function getMostDangerousPeople() {
     }
   });
 }
-console.log(await getMostDangerousPeople());
+
+async function reportMostDangerousPeople() {
+  let mostDangerousPeople = await JSON.stringify( await getMostDangerousPeople())
+  const response = await fetch(baseUrl + "report?array" + mostDangerousPeople);
+  return response.text()
+}
+console.log(await reportMostDangerousPeople())
