@@ -108,4 +108,5 @@ async function reportMostDangerousPeople() {
   const response = await fetch(baseUrl + "report?array" + mostDangerousPeople);
   return response.text()
 }
-console.log(await reportMostDangerousPeople())
+const response = await reportMostDangerousPeople()
+console.log(response)
