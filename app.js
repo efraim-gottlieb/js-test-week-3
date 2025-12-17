@@ -97,8 +97,8 @@ async function getMostDangerousPeople() {
   const topDangerousAges = await getTopDangerousAges();
   const transcriptions = await getTranscriptions();
   return transcriptions.filter((people) => {
-    if (topDangerousAges.includes(people.age.toString())){
-      return people
+    if (topDangerousAges.includes(people.age.toString())) {
+      return people;
     }
   });
 }
