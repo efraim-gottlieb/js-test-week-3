@@ -13,18 +13,18 @@ async function main() {
   while (choice !== "6") {
     choice = input("Enter your choice ");
     if (choice == "1") {
-      fetchPeople();
+      await fetchPeople();
       console.log("people fetched!");
     }
     if (choice == "2") {
-      fetchRecords();
+      await fetchRecords();
       console.log("records fetched!");
     }
     if (choice == "3") {
-      getPeopleByName(input("Enter name "));
+      await getPeopleByName(input("Enter name "));
     }
     if (choice == "4") {
-      getPeopleByAge(input("Enter age "));
+      await getPeopleByAge(input("Enter age "));
     }
     if (choice == "5") {
       const response = await getMostDangerousPeople();
@@ -32,5 +32,4 @@ async function main() {
     }
   }
 }
-
-main();
+main()

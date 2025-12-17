@@ -44,12 +44,12 @@ async function getPeopleBy(by, value) {
   }
 }
 
-export function getPeopleByName(name) {
-  getPeopleBy("name", name);
+export async function getPeopleByName(name) {
+  await getPeopleBy("name", name);
 }
 
-export function getPeopleByAge(age) {
-  getPeopleBy("age", age);
+export async function getPeopleByAge(age) {
+  await getPeopleBy("age", age);
 }
 
 function cleanString(str) {
