@@ -20,18 +20,33 @@ async function getPeoples() {
   return people;
 }
 
-async function getPeopleBy(by = 'name', name) {
+async function getPeopleBy(by, value) {
   const people = await getPeoples();
   const result = people.filter(
-    (people) => people.by.toLowerCase() == by.toLowerCase()
+    (people) =>
+      people[by].toString().toLowerCase() == value.toString().toLowerCase()
   );
   if (result.length === 0) {
-    console.log(`${name} not found!`);
+    console.log(`${by} ${value}, not found!`);
     return;
   }
-  console.log(result[0])
+  if (by === "name") {
+    console.log(result[0]);
+  } else if (by === "age") {
+    console.log(result);
+  }
 }
+
+function getPeopleByName(name) {
+  getPeopleBy('name', name)
+}
+
+function getPeopleByAge(age) {
+  getPeopleBy('age', age)
+}
+
 // fetchPeople();
 // fetchRecords();
-const name = "leah";
-getPeopleByName(name)
+// const name = "leah";
+// getPeopleByName(name);
+// getPeopleByAge(44);
