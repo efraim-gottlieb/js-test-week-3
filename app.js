@@ -45,8 +45,5 @@ function getPeopleByAge(age) {
   getPeopleBy('age', age)
 }
 
-// fetchPeople();
-// fetchRecords();
-// const name = "leah";
-// getPeopleByName(name);
-// getPeopleByAge(44);
+fetchPeople();
+fetchRecords();
