@@ -14,16 +14,16 @@ async function fetchRecords() {
   file.write("data/TRANSCRIPTIONS.json", JSON.stringify(records));
 }
 
-async function getPeople() {
+async function getPeoples() {
   let people = await file.read("data/PEOPLE.json");
   people = JSON.parse(people);
   return people;
 }
 
-async function getPeopleByName(name) {
-  const people = await getPeople();
+async function getPeopleBy(by = 'name', name) {
+  const people = await getPeoples();
   const result = people.filter(
-    (people) => people.name.toLowerCase() == name.toLowerCase()
+    (people) => people.by.toLowerCase() == by.toLowerCase()
   );
   if (result.length === 0) {
     console.log(`${name} not found!`);
@@ -31,7 +31,7 @@ async function getPeopleByName(name) {
   }
   console.log(result[0])
 }
-fetchPeople();
-fetchRecords();
+// fetchPeople();
+// fetchRecords();
 const name = "leah";
 getPeopleByName(name)
