@@ -84,4 +84,9 @@ async function avgDangerousByAge() {
   return avgOfAge;
 }
 
-console.log(await avgDangerousByAge())
+async function getTop() {
+  const avgOfAge = await avgDangerousByAge()
+  avgOfAge.sort((a, b) => a[1] - b[1]);
+  console.log(avgOfAge)
+}
+getTop()
