@@ -93,3 +93,10 @@ async function getTopDangerousAges() {
   return top
 }
 
+async function getMostDangerousPeople() {
+  const topDangerousAges = await getTopDangerousAges()
+  const mostDangerousPeople = []
+  topDangerousAges.forEach((age) => {console.log(getPeopleByAge(age))})
+
+}
+getMostDangerousPeople()
