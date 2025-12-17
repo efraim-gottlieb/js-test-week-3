@@ -1,5 +1,5 @@
-import api from "./api.js";
-import file from "./fileHandling.js";
+import api from "./utils/api.js";
+import file from "./utils/fileHandling.js";
 
 const baseUrl = "https://jsonplaceholder.typicode.com/posts";
 
