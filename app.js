@@ -1,6 +1,7 @@
 import { json } from "stream/consumers";
 import api from "./utils/api.js";
 import file from "./utils/fileHandling.js";
+import math from "./utils/mathTools.js";
 
 const baseUrl = "https://spies-test-server.vercel.app/";
 
@@ -74,4 +75,13 @@ async function getDangerousByAge() {
   return dangerousByAge;
 }
 
-console.log(await getDangerousByAge());
+async function avgDangerousByAge() {
+  const dangerousByAge = await getDangerousByAge();
+  const avgOfAge = {}
+  Object.keys(dangerousByAge).forEach((age) => {
+    avgOfAge[age] = math.avg(dangerousByAge[age])
+  })
+  return avgOfAge;
+}
+
+console.log(await avgDangerousByAge())
