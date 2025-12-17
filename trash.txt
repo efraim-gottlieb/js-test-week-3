@@ -1,1 +1,1 @@
-git add . ; git commit -m "added func downloadAndSaveRecords()" ; git checkout main ; git merge dev; git push ; git checkout dev
+git add . ; git commit -m "added func getPeopleByName(name)" ; git checkout main ; git merge dev; git push ; git checkout dev
