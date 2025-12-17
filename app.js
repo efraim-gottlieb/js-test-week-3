@@ -8,4 +8,11 @@ async function downloadAndSavePeople() {
   const people = await api.get(baseUrl + 'people');
   file.write("data/people.json", JSON.stringify(people));
 }
+
+async function downloadAndSaveRecords() {
+  const records = await api.get(baseUrl + 'transcriptions')
+  file.write("data/TRANSCRIPTIONS.json", JSON.stringify(records))
+}
+
 downloadAndSavePeople()
+downloadAndSaveRecords()
