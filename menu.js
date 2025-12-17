@@ -33,5 +33,4 @@ async function main() {
   }
 }
 
-// main();
-getPeopleByAge(32)
+main();
