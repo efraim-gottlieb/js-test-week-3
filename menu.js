@@ -8,7 +8,7 @@ import {
 import input from "analiza-sync";
 
 async function main() {
-  console.log("1. fetch peoples\n2.fetch records\n3. search people by name\n4. search people by age\n5.get most dangerous people\n6. exit");
+  console.log("1. fetch peoples\n2. fetch records\n3. search people by name\n4. search people by age\n5.get most dangerous people\n6. exit");
   let choice;
   while (choice !== "6") {
     choice = input("Enter your choice ");
