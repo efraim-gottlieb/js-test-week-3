@@ -20,6 +20,12 @@ async function getPeoples() {
   return people;
 }
 
+async function getTranscriptions() {
+  let transcriptions = await file.read("data/TRANSCRIPTIONS.json");
+  transcriptions = JSON.parse(transcriptions);
+  return transcriptions;
+}
+
 async function getPeopleBy(by, value) {
   const people = await getPeoples();
   const result = people.filter(
@@ -38,12 +44,34 @@ async function getPeopleBy(by, value) {
 }
 
 function getPeopleByName(name) {
-  getPeopleBy('name', name)
+  getPeopleBy("name", name);
 }
 
 function getPeopleByAge(age) {
-  getPeopleBy('age', age)
+  getPeopleBy("age", age);
 }
 
-fetchPeople();
-fetchRecords();
+function cleanString(str) {
+  return str.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "");
+}
+
+async function getDangerousByAge() {
+  const dangerousWords = ["death", "knife", "bomb", "attack"];
+  const transcriptions = await getTranscriptions();
+  const dangerousByAge = {};
+  transcriptions.forEach((transcription) => {
+    const text = transcription.content.split(" ");
+    const sumDangerousWords = text.filter((word) =>
+      dangerousWords.includes(cleanString(word).toLowerCase())
+    ).length;
+    if (sumDangerousWords > 0) {
+      if (!dangerousByAge.hasOwnProperty(transcription.age)) {
+        dangerousByAge[transcription.age] = [];
+      }
+      dangerousByAge[transcription.age].push(sumDangerousWords);
+    }
+  });
+  return dangerousByAge;
+}
+
+console.log(await getDangerousByAge());
