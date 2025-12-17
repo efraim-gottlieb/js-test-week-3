@@ -1,7 +1,7 @@
 import api from "./utils/api.js";
 import file from "./utils/fileHandling.js";
 
-const baseUrl = "https://jsonplaceholder.typicode.com/posts";
+const baseUrl = "";
 
 const book = { title: "foo", body: "bar", userId: 1 };
 
