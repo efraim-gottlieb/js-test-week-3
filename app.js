@@ -90,13 +90,16 @@ async function getTopDangerousAges() {
     .sort((a, b) => a[1] - b[1])
     .reverse();
   const top = sorted.slice(0, 3).map((age) => age[0]);
-  return top
+  return top;
 }
 
 async function getMostDangerousPeople() {
-  const topDangerousAges = await getTopDangerousAges()
-  const mostDangerousPeople = []
-  topDangerousAges.forEach((age) => {console.log(getPeopleByAge(age))})
-
+  const topDangerousAges = await getTopDangerousAges();
+  const transcriptions = await getTranscriptions();
+  return transcriptions.filter((people) => {
+    if (topDangerousAges.includes(people.age.toString())){
+      return people
+    }
+  });
 }
-getMostDangerousPeople()
+console.log(await getMostDangerousPeople());
