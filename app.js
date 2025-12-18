@@ -1,4 +1,3 @@
-import { json } from "stream/consumers";
 import api from "./utils/api.js";
 import file from "./utils/fileHandling.js";
 import math from "./utils/mathTools.js";
@@ -53,7 +52,7 @@ export async function getPeopleByAge(age) {
 }
 
 function cleanString(str) {
-  return str.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/g, "");
+  return str.replace(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/, "");
 }
 
 async function getDangerousByAge() {
